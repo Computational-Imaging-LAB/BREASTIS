@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BREASTIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% USER'S GUIDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Author: Basak Bayrambas
+E-mail: basak.bayrambas@gmail.com
+Company: BOUN BME Computational Imaging Lab
+Version: 1.0
+
+Please contact in case of encountering any uexpected errors or for providing feedback.
+
+READ BEFORE USE!
+
+BreastIS is a breast MRI analysis software package developed in MATLAB 2018a. It is available for download at Github (https://github.com/Computational-
+Imaging-LAB) for academic use.
+It requires SPM12 downloaded and added to the path.
+There are example workspaces provided for DCE-MRI, DWI and 1H-MRSI data analysis. 
+DCE-MRI and DWI data was obtained from TCIA database.
+
+TO USE EXAMPLE DATASET
+
+Create a Workspaces folder in your current MATLAB directory you want to study, if program already generated it, you don't need to do it again. Extract
+the sample database and copy and paste them in the Workspaces folder you created. To import them to the program follow the steps below.
+
+GETTING STARTED
+
+When it is initiated by the user, firstly a screen giving access to database appears. Here, user can create workspaces for each patients, and sub-datasets
+for each patient. Workspaces are stored under Workspaces folder generated in your current path. To create your own workspace, go to Workspace - New Workspace
+and enter the name. After creating it, you'll see your new empty workspace, on the left panel of your screen. To create sub-dataets for your new workspace, click
+on your workspace and go to Dataset Manager - New Dataset. Enter your dataset name and choose your data type as (anatomical MRI, DCE-MRI, DWI or 1H-MRSI). This
+selection can be changed later by going to Dataset Manager - Set Data Acquisition Type. To import DICOM data to your dataset, click on your dataset from the middle
+panel and go to Dataset Manager - Import DICOM. While selecting your data, choose just one DICOM file in a directory and the program will import all DICOM files
+in the same directory. That is why, the folder containing chosen DICOM needs to contain DICOM data of a single acquisition. 
+
+You can also import already created workspace from Workspace - Import Workspace menu.
+
+To upload automatically:
+Your data format should be as workspace - subsets - DICOM files. Then,
+To upload a set of patient data automatically, go to File - Upload. Then the program will ask you to choose a directory of patient data. Then it will create a
+workspace with the name of your chosen file and create sub-datasets by reading subfolders of your chosen file and import DICOM data in corresponding su-dataset.
+By following these steps you can upload a single workspace in your database. To upload more than one workspace, go to File - Upload all and this time choose the
+folder containing your patient folders which also contains subsets of DICOMs. Then it will generate more than one workspace with sub-datasets of DICOMs.
+
+During automated upload, the program tries to extract data acquisition type from DICOM info to set Data Acquisition type of each subset. Unless it cannot extract
+data acquisition type, it assigns anatomical MRI data type to corresponding dataset. But the user can change it to any other type by going to Set Data Acquisition
+Type from menu.
+
+To export DICOMs for visualization and analysis screen, there are two buttons on the right buttom of the screen. By choosing Export DICOM for Analysis button,
+on the chosen directory is exported. However, if you want to export more than one dataset, click Export Datasets and choose which datasets to export to analysis.
+If you're going to do modality based analysis, export datasets with the same data acquisition type.
+
+VISUALIZATION & ANALYSIS
+
+After exporting data, you'll see a screen showing your exported DICOM data. You can access DICOM info from Data Manager menu and sort the DICOMs according to slice
+location, instance number or acquisiton number. You can do ROI based analysis from ROI Manager menu. After defining ROI, you can see calculated ROI parameters on 
+the right side of MR image. By right clicking on image you can set your ROI visible or invisible and by clicking right on ROI info on the right, you can delete the
+calculated ROI parameters.
+
+For DWI Analysis:
+Go to Analysis - Diffusion Analysis - Preprocessing - Convert DICOM to Nii (with SPM). After completing go to Analysis - Diffusion Analysis - select which
+operation to calculate. You will see generated parameter maps on seperate DWI Analysis screen. You can do ROI based calculations and masking out the generated map
+from this screen.
+
+For DCE-MRI Analysis:
+Go to Analysis - DCE-MRI Analysis and choose operation to be calculated. This option calculates desired operation for only one dynamic series containing the 
+appearing image. For complete set of image analysis go to Analysis - DCE-MRI Analysis - Detailed Analysis and new screen will appear. You can select which operation
+to calculate from upper menu and calculate for whole set. You can also do ROI based calculations in this mode.
+
+For 1H-MRSI Analysis:
+While viewing a multi-voxel spectra in visualization screen, click on the voxel you want to zoom in for single voxel view. To calculate metabolite integrals of
+NAA/Cr and Cho/Cr ratios go to Analysis - Spectroscopy Analysis - calculate Metabolite Integrals. For further detailed calculations, apodization, phase correction,
+etc go to Analysis - Spectroscopy Analysis - Voxel Based Analysis. A separate screen will appear for MRSI analysis. You can select which voxel to operate from left
+upper corner of the screen. You can redefine axes options from Axis Properties panel on the left. You can do filtering, phase correction, water suppresion and
+show spectra after water peak from the rightside panel. You can define a ppm range and calculate area under the defined ppm range by using ROI Analysis button. You
+can generate metabolite maps from MEtabolite Maps button, then you can select which map to generate from the appearing menu. You can show anatomical image with the
+spectra from Show with Anatomical Image button by uploading anatomical image in DICOM format.  
+
+You can apply edge detection on MRI data or calculate SNR by defining ROI from image and background from Image Quality and Enhancement menu. To do filtering and 
+RF coil inhomogeneity correction on images go to Image Quality and Enhancement - Detailed Image Post Processing.
+In this screen, you can apply LPF, HPF, Gaussian and Median filters. By clicking Select Coil Sensitivity Map button, you can select coil sensitivity profile as
+DICOM data and you can smooth sensitivity profile before correction. By clicking Correct, you can correct the coil sensitivity effects on curreny image. You can
+transfer the changes in your current image with Export Back button.
+ 
+
+
